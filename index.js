@@ -1,34 +1,17 @@
-function findMinAndRemove(array){
-    let min = array[0]
-    let index = 0
-    array.forEach((el, i) => {
-        if(el < min){
-            min = el
-            index = i
+function findMinAndRemove(arr){
+    let index = 0;
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i] < arr[index]){
+            index = i;
         }
-    })
-    array.splice(index, 1)
-    return min
-}
-
-// recursive
-
-// function selectionSort(array, sortedArr = []){
-//     let unsortedArr = [...array]
-//     sortedArr.push(findMinAndRemove(unsortedArr))
-//     if(unsortedArr.length > 0){
-//         selectionSort(unsortedArr, sortedArr)
-//     }
-//     return sortedArr
-// }
-
-// while loop
-
-function selectionSort(array){
-    let unsortedArr = [...array]
-    let sortedArr = []
-    while (unsortedArr.length > 0 ){
-        sortedArr.push(findMinAndRemove(unsortedArr))
     }
-    return sortedArr
-}
+    return arr.splice(index, 1)[0];
+};
+
+function selectionSort(arr){
+    let sorted = [];
+    while(arr.length > 0){
+        sorted.push(findMinAndRemove(arr));
+    }
+    return sorted;
+};
